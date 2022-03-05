@@ -9,10 +9,18 @@ class SMS:
 
 
     def __init__(self, auth_token, debug=False):
-        self.auth_token  = auth_token
-        self.debug       = debug
+        self.id          = ''
+        self.to          = ''
+        self.name        = ''
+        self.body        = ''
+        self.status      = ''
+        self.date        = ''
+        self.time        = ''
         self.status_code = ''
         self.status_text = ''
+        self.ok          = False
+        self.auth_token  = auth_token
+        self.debug       = debug
 
 
     def headers(self):
@@ -29,7 +37,19 @@ class SMS:
         Set server response to object attributes
         """
         self.status_code = response.status_code
-        self.status_text = response.text
+        self.status_text = response.json()
+        self.ok = response.ok
+        if self.ok:
+            try:
+                self.id = response.json()['id']
+                self.to = response.json()['to']
+                self.name = response.json()['name']
+                self.body = response.json()['body']
+                self.status = response.json()['status']
+                self.date = response.json()['date']
+                self.time = response.json()['time']
+            except:
+                pass
 
 
     def is_debug(self, *args):

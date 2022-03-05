@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
   name = 'letesend',         # How you named your package folder (MyLib)
   packages = ['letesend'],   # Chose the same as "name"
-  version = '0.2',      # Start with a small number and increase it with every change you make
+  version = '0.4',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Letesend sdk for sending and monitoring SMS',   # Give a short description about your library
   long_description=long_description,
